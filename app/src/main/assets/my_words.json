@@ -1,0 +1,15 @@
+{
+  "animal": [
+    "kutya",
+    "macska",
+    "egér"
+  ],
+  "fruit": [
+    "alma",
+    "szilva"
+  ],
+  "flower": [
+    "pipacs",
+    "tulipán"
+  ]
+}

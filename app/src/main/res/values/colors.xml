@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="default_backgr_color">#1198D5</color>
+    <color name="lose_backg_color">#D5EB0909</color>
+    <color name="win_backgr_color">#11AD0D</color>
+
+</resources>
