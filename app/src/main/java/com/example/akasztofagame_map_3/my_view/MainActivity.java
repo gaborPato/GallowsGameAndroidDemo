@@ -1,6 +1,5 @@
 package com.example.akasztofagame_map_3.my_view;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.res.AssetManager;
@@ -29,6 +28,8 @@ import com.example.akasztofagame_map_3.my_modell.PictureService;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import controller.constans.MY_COLOR;
 import controller.constans.MY_STRINGS;
@@ -48,14 +49,14 @@ public class MainActivity extends AppCompatActivity {
     private String tippChar;
     private AppCompatSpinner wordsGroupSpinner;
     private LinearLayout mainLOut;
-    public static Context staticContext;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        staticContext=getApplicationContext();
+
         mainLOut = findViewById(R.id.main_layout);
         mainLOut.setBackgroundColor(MY_COLOR.DEF_BACK_COLOR);
 
@@ -112,7 +113,16 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if (s.length() == 1) {
+
+
+
                     tippChar = inputCharEditText.getText().toString().toLowerCase();
+
+                    if (!verifyAllowedChar(tippChar)){
+                        inputCharEditText.setText("");
+                        return;
+                    }
+
                     if (verifyDuplicatedTipp(tippChar, usedCharTV.getText())) {
                         inputCharEditText.setText("");
                         return;
@@ -145,16 +155,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private boolean verifyAllowedChar(String tippChar) {
+
+
+        Pattern pattern= Pattern.compile("^[a-zíéáűőúöüó]*$");
+        return   pattern.matcher(tippChar).matches();
+
+
+
+    }
+
     private boolean verifyDuplicatedTipp(String tippChar, CharSequence usedCharTV) {
 
         String substring = usedCharTV.toString().substring(MY_STRINGS.START_USED_CHARS_TEXT.length());
 
+        return substring.contains(tippChar);
 
-        if (substring.contains(tippChar)) {
-            return true;
-        }
-
-        return false;
     }
 
     private void createFOUW() {
