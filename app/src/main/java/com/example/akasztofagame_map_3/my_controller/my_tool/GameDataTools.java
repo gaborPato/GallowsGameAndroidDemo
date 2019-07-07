@@ -3,6 +3,8 @@ package com.example.akasztofagame_map_3.my_controller.my_tool;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class GameDataTools {
     private GameDataTools() {
     }
@@ -23,11 +25,12 @@ public class GameDataTools {
         return result.toString();
     }
 
-    public static Object charVerify(String wordPass, String aCharacter) {
-        List<Integer> result = new ArrayList();
+    public static List<Integer> charVerify(String wordPass, String aCharacter) {
+
         if (!wordPass.toLowerCase().contains(aCharacter)) {
-            return null;
+            return new ArrayList<>();
         } else {
+            List<Integer> result = new ArrayList();
             for (int i = 0; i < wordPass.length(); ++i) {
                 if (wordPass.toLowerCase().charAt(i) == aCharacter.charAt(0)) {
                     result.add(i);

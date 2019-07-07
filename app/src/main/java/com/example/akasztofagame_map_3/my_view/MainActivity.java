@@ -109,10 +109,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-//
 
 
-                if (s.length() == 1) {
+
+
+                if (count == 1) {
 
 
 
@@ -127,17 +128,17 @@ public class MainActivity extends AppCompatActivity {
                         inputCharEditText.setText("");
                         return;
                     }
-                    List<Integer> resultList = (List<Integer>) GameDataTools.charVerify(fouw.getEntry().getKey().toString(), tippChar);
+                    List<Integer> resultList = GameDataTools.charVerify(fouw.getEntry().getKey().toString(), tippChar);
                     inputCharEditText.setText("");
                     usedCharTV.setText(usedCharTV.getText() + tippChar + ",");
 
-                    if (resultList == null) {
+                    if (resultList.isEmpty()) {
                         badAnswerOperation();
-                        System.out.println("bad answer" + resultList);
+                       // System.out.println("bad answer" + resultList);
 
                     } else {
                         rightAnswerOperation(resultList);
-                        System.out.println("right answer" + resultList);
+                        //System.out.println("right answer" + resultList);
 
                     }
 
